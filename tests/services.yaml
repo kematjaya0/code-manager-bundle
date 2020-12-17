@@ -1,0 +1,10 @@
+framework:
+    test: true
+    
+services:
+        
+    Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface:
+        class: Kematjaya\CodeManagerBundle\Tests\Repository\CodeLibraryRepositoryTest
+        
+    Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface:
+        class: Kematjaya\CodeManagerBundle\Tests\Repository\CodeLibraryLogRepositoryTest

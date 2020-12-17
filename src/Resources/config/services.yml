@@ -3,3 +3,24 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+
+    Kematjaya\CodeManager\Builder\CodeBuilderInterface:
+        class: Kematjaya\CodeManager\Builder\CodeBuilder
+        
+    Kematjaya\CodeManager\Manager\CodeManagerInterface:
+        class: Kematjaya\CodeManager\Manager\CodeManager
+        
+    Kematjaya\CodeManager\Manager\CodeLibraryLogManagerInterface:
+        class: Kematjaya\CodeManager\Manager\CodeLibraryLogManager
+        
+    kmj.code_builder:
+        alias: Kematjaya\CodeManager\Builder\CodeBuilderInterface
+        public: true
+        
+    kmj.code_manager:
+        alias: Kematjaya\CodeManager\Manager\CodeManagerInterface
+        public: true
+        
+    kmj.code_log_manager:
+        alias: Kematjaya\CodeManager\Manager\CodeLibraryLogManagerInterface
+        public: true
