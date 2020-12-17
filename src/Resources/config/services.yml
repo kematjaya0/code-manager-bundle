@@ -24,3 +24,8 @@ services:
     kmj.code_log_manager:
         alias: Kematjaya\CodeManager\Manager\CodeLibraryLogManagerInterface
         public: true
+        
+    Kematjaya\CodeManagerBundle\Listener\CodeManagerListener:
+        class: Kematjaya\CodeManagerBundle\Listener\CodeManagerListener
+        tags: 
+            - { name: doctrine.event_listener, event: preFlush, priority: 1000 }
