@@ -43,8 +43,8 @@ class CodeManagerListener
             return false;
         }
 
-        if(null !== $entity->getGeneratedCode()) {
-            false;
+        if(null != $entity->getGeneratedCode()) {
+            return false;
         }
         
         return true;
