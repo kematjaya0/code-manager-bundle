@@ -4,7 +4,7 @@ services:
         autoconfigure: true
         public: false
 
-    Kematjaya\CodeManager\Builder\CodeBuilderInterface:
+    Kematjaya\CodeManager\Builder\AbstractCodeBuilder:
         class: Kematjaya\CodeManager\Builder\CodeBuilder
         
     Kematjaya\CodeManager\Manager\CodeManagerInterface:
