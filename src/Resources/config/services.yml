@@ -14,7 +14,7 @@ services:
         class: Kematjaya\CodeManager\Manager\CodeLibraryLogManager
         
     kmj.code_builder:
-        alias: Kematjaya\CodeManager\Builder\CodeBuilderInterface
+        alias: Kematjaya\CodeManager\Builder\AbstractCodeBuilder
         public: true
         
     kmj.code_manager:
