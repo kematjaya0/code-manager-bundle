@@ -39,3 +39,9 @@ services:
         class: Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository
         tags: 
             - doctrine.repository_service
+            
+    Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface:
+        alias: Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository
+        
+    Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface:
+        alias: Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository
