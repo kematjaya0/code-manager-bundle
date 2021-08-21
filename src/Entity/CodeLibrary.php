@@ -54,6 +54,11 @@ class CodeLibrary implements CodeLibraryResetInterface
      */
     private $reset_key;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $length;
+    
     public function getId(): ?\Symfony\Component\Uid\Uuid
     {
         return $this->id;
@@ -151,4 +156,18 @@ class CodeLibrary implements CodeLibraryResetInterface
 
         return $this;
     }
+    
+    public function getLength():?int 
+    {
+        return $this->length;
+    }
+
+    public function setLength($length):self 
+    {
+        $this->length = $length;
+        
+        return $this;
+    }
+
+
 }
