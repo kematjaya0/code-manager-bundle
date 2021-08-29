@@ -8,6 +8,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryClientInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryInterface;
+use Kematjaya\CodeManager\Entity\CodeManagerClientInterface;
+
 
 /**
  * @method CodeLibrary|null find($id, $lockMode = null, $lockVersion = null)
@@ -24,7 +26,15 @@ class CodeLibraryRepository extends ServiceEntityRepository implements CodeLibra
 
     public function findOneByClient(CodeLibraryClientInterface $client): ?CodeLibraryInterface 
     {
-        return $this->findOneBy(['class_name' => get_class($client)]);
+        if (!$client instanceof CodeManagerClientInterface) {
+            
+            return $this->findOneBy(['class_name' => get_class($client)]);
+        }
+        
+        $conditions = $client->getAdditionalConditions();
+        $conditions['class_name'] = $client->getClientClassName();
+        
+        return $this->findOneBy($conditions);
     }
 
     public function save(CodeLibraryInterface $object): void 
