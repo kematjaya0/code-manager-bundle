@@ -4,6 +4,8 @@ namespace Kematjaya\CodeManagerBundle\Entity;
 
 use Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Kematjaya\CodeManager\Entity\CodeLibraryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryResetInterface;
 /**
@@ -58,6 +60,16 @@ class CodeLibrary implements CodeLibraryResetInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $length;
+    
+    /**
+     * @ORM\OneToMany(targetEntity=CodeLibraryAttribute::class, mappedBy="code_library")
+     */
+    private $attributes;
+    
+    public function __construct()
+    {
+        $this->attributes = new ArrayCollection();
+    }
     
     public function getId(): ?\Symfony\Component\Uid\Uuid
     {
@@ -168,6 +180,35 @@ class CodeLibrary implements CodeLibraryResetInterface
         
         return $this;
     }
+    
+    /**
+     * @return Collection|CodeLibraryAttribute[]
+     */
+    public function getCodeLibraryAttributes(): Collection
+    {
+        return $this->attributes;
+    }
 
+    public function addCodeLibraryAttribute(CodeLibraryAttribute $attributes): self
+    {
+        if (!$this->attributes->contains($attributes)) {
+            $this->attributes[] = $attributes;
+            $attributes->setCodeLibrary($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCodeLibraryAttribute(CodeLibraryAttribute $attributes): self
+    {
+        if ($this->attributes->removeElement($attributes)) {
+            // set the owning side to null (unless already changed)
+            if ($attributes->getCodeLibrary() === $this) {
+                $attributes->setCodeLibrary(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

@@ -31,10 +31,7 @@ class CodeLibraryRepository extends ServiceEntityRepository implements CodeLibra
             return $this->findOneBy(['class_name' => get_class($client)]);
         }
         
-        $conditions = $client->getAdditionalConditions();
-        $conditions['class_name'] = $client->getClientClassName();
-        
-        return $this->findOneBy($conditions);
+        return $this->findOneBy(['class_name' => $client->getClientClassName()]);
     }
 
     public function save(CodeLibraryInterface $object): void 

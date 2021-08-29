@@ -8,7 +8,7 @@ services:
         class: Kematjaya\CodeManager\Builder\CodeBuilder
         
     Kematjaya\CodeManager\Manager\CodeManagerInterface:
-        class: Kematjaya\CodeManager\Manager\CodeManager
+        class: Kematjaya\CodeManagerBundle\Manager\CodeManager
         
     Kematjaya\CodeManager\Manager\CodeLibraryLogManagerInterface:
         class: Kematjaya\CodeManager\Manager\CodeLibraryLogManager
@@ -29,6 +29,11 @@ services:
         class: Kematjaya\CodeManagerBundle\Listener\CodeManagerListener
         tags: 
             - { name: doctrine.event_listener, event: preFlush, priority: 1000 }
+            
+    Kematjaya\CodeManagerBundle\Repository\CodeLibraryAttributeRepository:
+        class: Kematjaya\CodeManagerBundle\Repository\CodeLibraryAttributeRepository
+        tags: 
+            - doctrine.repository_service
             
     Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository:
         class: Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository
