@@ -1,6 +1,6 @@
 <?php
 
-namespace Kematjaya\CodeManagerBundle\Test;
+namespace Kematjaya\CodeManagerBundle\Tests;
 
 use Kematjaya\CodeManagerBundle\CodeManagerBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class AppKernelTest extends Kernel
 {
-    public function registerBundles()
+    public function registerBundles():iterable
     {
         return [
             new CodeManagerBundle(),
@@ -21,7 +21,7 @@ class AppKernelTest extends Kernel
         ];
     }
     
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader):void
     {
         $loader->load(function (ContainerBuilder $container) use ($loader) 
         {

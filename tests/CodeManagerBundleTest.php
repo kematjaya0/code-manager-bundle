@@ -1,6 +1,6 @@
 <?php
 
-namespace Kematjaya\CodeManagerBundle\Test;
+namespace Kematjaya\CodeManagerBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Kematjaya\CodeManager\Builder\CodeBuilderInterface;
@@ -21,7 +21,7 @@ class CodeManagerBundleTest extends WebTestCase
     }
     
     
-    public static function getKernelClass() 
+    public static function getKernelClass() :string
     {
         return AppKernelTest::class;
     }
