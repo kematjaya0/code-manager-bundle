@@ -6,6 +6,8 @@ use Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Kematjaya\CodeManager\Entity\CodeLibraryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryResetInterface;
+use Symfony\Component\Uid\Uuid;
+
 /**
  * @ORM\Entity(repositoryClass=CodeLibraryRepository::class)
  */
@@ -54,9 +56,26 @@ class CodeLibrary implements CodeLibraryResetInterface
      */
     private $reset_key;
 
-    public function getId(): ?\Symfony\Component\Uid\Uuid
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $length;
+
+    public function getId(): ?Uuid
     {
         return $this->id;
+    }
+
+    public function getLength(): ?int
+    {
+        return $this->length;
+    }
+
+    public function setLength(?int $length): self
+    {
+        $this->length = $length;
+
+        return $this;
     }
 
     public static function getSeparators()
@@ -67,7 +86,7 @@ class CodeLibrary implements CodeLibraryResetInterface
             self::SEPARATOR_SLASH
         ];
     }
-    
+
     public function getFormat(): ?string
     {
         return $this->format;

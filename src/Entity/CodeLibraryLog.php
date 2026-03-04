@@ -5,6 +5,7 @@ namespace Kematjaya\CodeManagerBundle\Entity;
 use Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Kematjaya\CodeManager\Entity\CodeLibraryLogInterface;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=CodeLibraryLogRepository::class)
@@ -39,7 +40,7 @@ class CodeLibraryLog implements CodeLibraryLogInterface
      */
     private $generated_code;
 
-    public function getId(): ?\Symfony\Component\Uid\Uuid
+    public function getId(): ?Uuid
     {
         return $this->id;
     }

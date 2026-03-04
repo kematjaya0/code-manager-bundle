@@ -4,7 +4,7 @@ framework:
 services:
         
     Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface:
-        class: Kematjaya\CodeManagerBundle\Tests\Repository\CodeLibraryRepositoryTest
+        class: Kematjaya\CodeManagerBundle\Tests\Mock\CodeLibraryRepositoryMock
         
     Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface:
-        class: Kematjaya\CodeManagerBundle\Tests\Repository\CodeLibraryLogRepositoryTest
+        class: Kematjaya\CodeManagerBundle\Tests\Mock\CodeLibraryLogRepositoryMock

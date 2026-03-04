@@ -34,13 +34,19 @@ class CodeLibraryRepository extends ServiceEntityRepository implements CodeLibra
     
     public function filterClass(array $className):array
     {
-        return array_filter($className, function ($value) {
-            $qb = $this->createQueryBuilder('t');
-            $qb->where('t.class_name = :class_name')
-                    ->setParameter('class_name', $value)
-                    ->setMaxResults(1);
-            
-            return $qb->getQuery()->getOneOrNullResult() ? false : true;
+        if (empty($className)) {
+            return [];
+        }
+
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('t.class_name')
+           ->where($qb->expr()->in('t.class_name', ':class_names'))
+           ->setParameter('class_names', $className);
+
+        $existingClasses = array_column((array) $qb->getQuery()->getArrayResult(), 'class_name');
+
+        return array_filter($className, function ($value) use ($existingClasses) {
+            return !in_array($value, $existingClasses);
         });
     }
 
