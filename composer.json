@@ -9,17 +9,22 @@
         }
     ],
     "require": {
-        "kematjaya/code-manager": "^1.0",
-        "symfony/dependency-injection": "^4.0|^5.0",
-        "symfony/config": "^4.0|^5.0",
-        "symfony/yaml": "^4.0|^5.0",
-        "doctrine/orm": "^2.7"
+        "php": ">=8.1",
+        "kematjaya/code-manager": "^6.4",
+        "symfony/dependency-injection": "^6.4",
+        "symfony/config": "^6.4",
+        "symfony/http-kernel": "^6.4",
+        "symfony/yaml": "^6.4",
+        "symfony/uid": "^6.4",
+        "symfony/doctrine-bridge": "^6.4",
+        "doctrine/orm": "^2.14|^3.0",
+        "doctrine/doctrine-bundle": "^2.8"
     },
     "require-dev": {
-        "symfony/var-dumper": "^4.0|^5.0",
-        "phpunit/phpunit": "^9.0",
-        "symfony/framework-bundle": "^4.0|^5.0",
-        "symfony/browser-kit": "^4.0|^5.0"
+        "phpunit/phpunit": "^9.6",
+        "symfony/phpunit-bridge": "^6.4",
+        "symfony/framework-bundle": "^6.4",
+        "symfony/var-dumper": "^6.4"
     },
     "autoload": {
         "psr-4": {

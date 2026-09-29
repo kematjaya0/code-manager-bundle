@@ -24,9 +24,9 @@ class CodeManagerListener
         $this->codeManager = $codeManager;
     }
     
-    public function preFlush(PreFlushEventArgs $event)
+    public function preFlush(PreFlushEventArgs $event): void
     {
-        $em = $event->getEntityManager();
+        $em = $event->getObjectManager();
         $uow = $em->getUnitOfWork();
         foreach($uow->getScheduledEntityInsertions() as $entity) {
             if(!$this->allowTogenerate($entity)) {

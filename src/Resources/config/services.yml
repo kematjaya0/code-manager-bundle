@@ -29,3 +29,19 @@ services:
         class: Kematjaya\CodeManagerBundle\Listener\CodeManagerListener
         tags: 
             - { name: doctrine.event_listener, event: preFlush, priority: 1000 }
+            
+    Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository:
+        class: Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository
+        tags: 
+            - doctrine.repository_service
+            
+    Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository:
+        class: Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository
+        tags: 
+            - doctrine.repository_service
+            
+    Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface:
+        alias: Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository
+            
+    Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface:
+        alias: Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository
