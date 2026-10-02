@@ -2,15 +2,15 @@
 
 namespace Kematjaya\CodeManagerBundle\Tests\Entity;
 
-use PHPUnit\Framework\TestCase;
 use Kematjaya\CodeManagerBundle\Entity\CodeLibrary;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Nur Hidayatullah <kematjaya0@gmail.com>
  */
 class CodeLibraryTest extends TestCase
 {
-    public function testGettersAndSetters()
+    public function testGettersAndSetters(): void
     {
         $entity = new CodeLibrary();
 
@@ -40,7 +40,7 @@ class CodeLibraryTest extends TestCase
         $this->assertEquals(10, $entity->getLength());
     }
 
-    public function testGetSeparators()
+    public function testGetSeparators(): void
     {
         $separators = CodeLibrary::getSeparators();
         $this->assertIsArray($separators);

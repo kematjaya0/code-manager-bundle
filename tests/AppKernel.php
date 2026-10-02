@@ -5,8 +5,8 @@ namespace Kematjaya\CodeManagerBundle\Tests;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Kematjaya\CodeManagerBundle\CodeManagerBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * @author Nur Hidayatullah <kematjaya0@gmail.com>

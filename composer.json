@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "kematjaya/code-manager": "^6.4",
         "symfony/dependency-injection": "^6.4",
         "symfony/config": "^6.4",

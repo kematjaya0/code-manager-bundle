@@ -2,13 +2,13 @@
 
 namespace Kematjaya\CodeManagerBundle\Tests\Listener;
 
-use PHPUnit\Framework\TestCase;
-use Kematjaya\CodeManagerBundle\Listener\CodeManagerListener;
-use Kematjaya\CodeManager\Manager\CodeManagerInterface;
-use Kematjaya\CodeManager\Entity\CodeLibraryClientInterface;
-use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\UnitOfWork;
+use Kematjaya\CodeManager\Entity\CodeLibraryClientInterface;
+use Kematjaya\CodeManager\Manager\CodeManagerInterface;
+use Kematjaya\CodeManagerBundle\Listener\CodeManagerListener;
+use PHPUnit\Framework\TestCase;
 
 class CodeManagerListenerTest extends TestCase
 {
@@ -21,7 +21,7 @@ class CodeManagerListenerTest extends TestCase
         return new PreFlushEventArgs($em);
     }
 
-    public function testPreFlushWithValidEntity()
+    public function testPreFlushWithValidEntity(): void
     {
         $codeManager = $this->createMock(CodeManagerInterface::class);
         $em = $this->createMock(EntityManagerInterface::class);
@@ -39,7 +39,7 @@ class CodeManagerListenerTest extends TestCase
         $listener->preFlush($this->createEventArgs($em, [$entity]));
     }
 
-    public function testPreFlushWithEntityAlreadyHavingCode()
+    public function testPreFlushWithEntityAlreadyHavingCode(): void
     {
         $codeManager = $this->createMock(CodeManagerInterface::class);
         $em = $this->createMock(EntityManagerInterface::class);
@@ -54,7 +54,7 @@ class CodeManagerListenerTest extends TestCase
         $listener->preFlush($this->createEventArgs($em, [$entity]));
     }
 
-    public function testPreFlushWithInvalidEntity()
+    public function testPreFlushWithInvalidEntity(): void
     {
         $codeManager = $this->createMock(CodeManagerInterface::class);
         $em = $this->createMock(EntityManagerInterface::class);

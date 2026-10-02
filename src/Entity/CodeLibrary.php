@@ -2,11 +2,11 @@
 
 namespace Kematjaya\CodeManagerBundle\Entity;
 
-use Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Kematjaya\CodeManager\Entity\CodeLibraryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryResetInterface;
+use Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
 

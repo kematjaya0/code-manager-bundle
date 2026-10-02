@@ -2,11 +2,11 @@
 
 namespace Kematjaya\CodeManagerBundle\Repository;
 
-use Kematjaya\CodeManagerBundle\Entity\CodeLibraryLog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryLogInterface;
+use Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface;
+use Kematjaya\CodeManagerBundle\Entity\CodeLibraryLog;
 
 /**
  * @method CodeLibraryLog|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,12 +21,12 @@ class CodeLibraryLogRepository extends ServiceEntityRepository implements CodeLi
         parent::__construct($registry, CodeLibraryLog::class);
     }
 
-    public function createLog(): CodeLibraryLogInterface 
+    public function createLog(): CodeLibraryLogInterface
     {
         return new CodeLibraryLog();
     }
 
-    public function save(CodeLibraryLogInterface $object): void 
+    public function save(CodeLibraryLogInterface $object): void
     {
         $this->getEntityManager()->persist($object);
     }

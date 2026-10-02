@@ -2,10 +2,10 @@
 
 namespace Kematjaya\CodeManagerBundle\Entity;
 
-use Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Kematjaya\CodeManager\Entity\CodeLibraryLogInterface;
+use Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
 

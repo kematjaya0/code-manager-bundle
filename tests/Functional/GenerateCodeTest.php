@@ -44,7 +44,7 @@ class GenerateCodeTest extends KernelTestCase
         return $library;
     }
 
-    public function testGenerateCodeOnFlush()
+    public function testGenerateCodeOnFlush(): void
     {
         $library = $this->createLibrary('INV/{number}/{YYYY}', '/');
         $this->assertInstanceOf(Uuid::class, $library->getId());
@@ -72,7 +72,7 @@ class GenerateCodeTest extends KernelTestCase
         $this->assertSame('INV/0001/' . date('Y'), $logs[0]->getGeneratedCode());
     }
 
-    public function testExistingCodeIsKept()
+    public function testExistingCodeIsKept(): void
     {
         $this->createLibrary('INV-{number}', '-');
 
@@ -84,7 +84,7 @@ class GenerateCodeTest extends KernelTestCase
         $this->assertCount(0, $this->em->getRepository(CodeLibraryLog::class)->findAll());
     }
 
-    public function testResetSequenceByClientLibrary()
+    public function testResetSequenceByClientLibrary(): void
     {
         $this->createLibrary('{branch}.{number}', '.', '{branch}', 3);
 
@@ -99,7 +99,7 @@ class GenerateCodeTest extends KernelTestCase
         $this->assertSame(['JKT.001', 'JKT.002', 'SBY.001', 'SBY.002'], $codes);
     }
 
-    public function testFilterClass()
+    public function testFilterClass(): void
     {
         $this->createLibrary('INV-{number}', '-');
 

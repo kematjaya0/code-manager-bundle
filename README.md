@@ -74,6 +74,6 @@ Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface:
 
 ## Test
 ```
-LOCAL_PACKAGES="code-manager" sh docker/test.sh all
-EXTRA_REQUIRE="doctrine/orm:^2.14" sh docker/test.sh 8.1 6.4
+LOCAL_PACKAGES="code-manager" sh ../test.sh code-manager-bundle all
+EXTRA_REQUIRE="doctrine/orm:^2.14" sh ../test.sh code-manager-bundle 8.1 6.4
 ```

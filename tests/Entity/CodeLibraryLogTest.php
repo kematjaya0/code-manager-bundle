@@ -2,15 +2,15 @@
 
 namespace Kematjaya\CodeManagerBundle\Tests\Entity;
 
-use PHPUnit\Framework\TestCase;
 use Kematjaya\CodeManagerBundle\Entity\CodeLibraryLog;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Nur Hidayatullah <kematjaya0@gmail.com>
  */
 class CodeLibraryLogTest extends TestCase
 {
-    public function testGettersAndSetters()
+    public function testGettersAndSetters(): void
     {
         $entity = new CodeLibraryLog();
 

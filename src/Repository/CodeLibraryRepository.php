@@ -2,12 +2,12 @@
 
 namespace Kematjaya\CodeManagerBundle\Repository;
 
-use Kematjaya\CodeManagerBundle\Entity\CodeLibrary;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryClientInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryInterface;
+use Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface;
+use Kematjaya\CodeManagerBundle\Entity\CodeLibrary;
 
 /**
  * @method CodeLibrary|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,17 +22,17 @@ class CodeLibraryRepository extends ServiceEntityRepository implements CodeLibra
         parent::__construct($registry, CodeLibrary::class);
     }
 
-    public function findOneByClient(CodeLibraryClientInterface $client): ?CodeLibraryInterface 
+    public function findOneByClient(CodeLibraryClientInterface $client): ?CodeLibraryInterface
     {
-        return $this->findOneBy(['class_name' => get_class($client)]);
+        return $this->findOneBy(['class_name' => $client::class]);
     }
 
-    public function save(CodeLibraryInterface $object): void 
+    public function save(CodeLibraryInterface $object): void
     {
         $this->getEntityManager()->persist($object);
     }
-    
-    public function filterClass(array $className):array
+
+    public function filterClass(array $className): array
     {
         if (empty($className)) {
             return [];
@@ -45,9 +45,7 @@ class CodeLibraryRepository extends ServiceEntityRepository implements CodeLibra
 
         $existingClasses = array_column((array) $qb->getQuery()->getArrayResult(), 'class_name');
 
-        return array_filter($className, function ($value) use ($existingClasses) {
-            return !in_array($value, $existingClasses);
-        });
+        return array_filter($className, fn($value): bool => !in_array($value, $existingClasses));
     }
 
 }

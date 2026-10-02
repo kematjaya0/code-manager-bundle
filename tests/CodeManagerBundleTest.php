@@ -3,8 +3,8 @@
 namespace Kematjaya\CodeManagerBundle\Tests;
 
 use Kematjaya\CodeManager\Builder\CodeBuilderInterface;
-use Kematjaya\CodeManager\Manager\CodeManagerInterface;
 use Kematjaya\CodeManager\Manager\CodeLibraryLogManagerInterface;
+use Kematjaya\CodeManager\Manager\CodeManagerInterface;
 use Kematjaya\CodeManager\Repository\CodeLibraryLogRepositoryInterface;
 use Kematjaya\CodeManager\Repository\CodeLibraryRepositoryInterface;
 use Kematjaya\CodeManagerBundle\Repository\CodeLibraryLogRepository;
@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class CodeManagerBundleTest extends KernelTestCase
 {
-    public function testInstance()
+    public function testInstance(): void
     {
         $container = static::getContainer();
         $this->assertInstanceOf(CodeBuilderInterface::class, $container->get('kmj.code_builder'));
@@ -24,7 +24,7 @@ class CodeManagerBundleTest extends KernelTestCase
         $this->assertInstanceOf(CodeLibraryLogManagerInterface::class, $container->get('kmj.code_log_manager'));
     }
 
-    public function testDefaultRepositories()
+    public function testDefaultRepositories(): void
     {
         $container = static::getContainer();
         $this->assertInstanceOf(CodeLibraryRepository::class, $container->get(CodeLibraryRepositoryInterface::class));

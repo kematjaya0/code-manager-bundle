@@ -17,13 +17,10 @@ class Invoice implements CodeLibraryClientInterface
     #[ORM\Column(type: Types::STRING, length: 255)]
     private ?string $code = null;
 
-    #[ORM\Column(type: Types::STRING, length: 10)]
-    private string $branch;
-
-    public function __construct(string $branch = 'JKT')
-    {
-        $this->branch = $branch;
-    }
+    public function __construct(
+        #[ORM\Column(type: Types::STRING, length: 10)]
+        private string $branch = 'JKT'
+    ) {}
 
     public function getId(): ?int
     {
