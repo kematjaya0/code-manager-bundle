@@ -2,64 +2,47 @@
 
 namespace Kematjaya\CodeManagerBundle\Entity;
 
-use Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Kematjaya\CodeManager\Entity\CodeLibraryInterface;
 use Kematjaya\CodeManager\Entity\CodeLibraryResetInterface;
+use Kematjaya\CodeManagerBundle\Repository\CodeLibraryRepository;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
 
-/**
- * @ORM\Entity(repositoryClass=CodeLibraryRepository::class)
- */
+#[ORM\Entity(repositoryClass: CodeLibraryRepository::class)]
 class CodeLibrary implements CodeLibraryResetInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="uuid", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class=Symfony\Bridge\Doctrine\IdGenerator\UuidV4Generator::class)
-     */
-    private $id;
+    public const SEPARATOR_DOT = '.';
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $format;
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: UuidGenerator::class)]
+    private ?Uuid $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $class_name;
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $format = null;
 
-    /**
-     * @ORM\Column(name="separator_field", type="string", length=255)
-     */
-    private $separator;
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $class_name = null;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $last_used;
+    #[ORM\Column(name: 'separator_field', type: Types::STRING, length: 255)]
+    private ?string $separator = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $last_sequence;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $last_used = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $last_code;
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
+    private ?int $last_sequence = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $reset_key;
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    private ?string $last_code = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $length;
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    private ?string $reset_key = null;
+
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
+    private ?int $length = null;
 
     public function getId(): ?Uuid
     {
@@ -78,12 +61,13 @@ class CodeLibrary implements CodeLibraryResetInterface
         return $this;
     }
 
-    public static function getSeparators()
+    public static function getSeparators(): array
     {
         return [
             self::SEPARATOR_BACKSLASH,
             self::SEPARATOR_MINUS,
-            self::SEPARATOR_SLASH
+            self::SEPARATOR_SLASH,
+            self::SEPARATOR_DOT,
         ];
     }
 
@@ -128,7 +112,7 @@ class CodeLibrary implements CodeLibraryResetInterface
         return $this->last_used;
     }
 
-    public function setLastUsed(?\DateTimeInterface $last_used): CodeLibraryInterface
+    public function setLastUsed(?\DateTimeInterface $last_used): self
     {
         $this->last_used = $last_used;
 
@@ -140,7 +124,7 @@ class CodeLibrary implements CodeLibraryResetInterface
         return $this->last_sequence;
     }
 
-    public function setLastSequence(?int $last_sequence): CodeLibraryInterface
+    public function setLastSequence(?int $last_sequence): self
     {
         $this->last_sequence = $last_sequence;
 
@@ -152,7 +136,7 @@ class CodeLibrary implements CodeLibraryResetInterface
         return $this->last_code;
     }
 
-    public function setLastCode(?string $last_code): CodeLibraryInterface
+    public function setLastCode(?string $last_code): self
     {
         $this->last_code = $last_code;
 

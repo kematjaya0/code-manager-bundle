@@ -9,19 +9,24 @@
         }
     ],
     "require": {
-        "kematjaya/code-manager": "^1.0",
-        "symfony/dependency-injection": "^5.4|^6.0|^7.0",
-        "symfony/config": "^5.4|^6.0|^7.0",
-        "symfony/yaml": "^5.4|^6.0|^7.0",
-        "doctrine/orm": "^2.7|^3.6",
-        "symfony/uid": "^5.4|^6.0|^7.0"
+        "php": ">=8.4",
+        "kematjaya/code-manager": "^7.4",
+        "symfony/dependency-injection": "^7.4",
+        "symfony/config": "^7.4",
+        "symfony/http-kernel": "^7.4",
+        "symfony/yaml": "^7.4",
+        "symfony/uid": "^7.4",
+        "symfony/doctrine-bridge": "^7.4",
+        "doctrine/orm": "^2.14|^3.0",
+        "doctrine/doctrine-bundle": "^2.13|^3.0"
     },
     "require-dev": {
-        "symfony/var-dumper": "^5.4|^6.0|^7.0",
-        "doctrine/doctrine-bundle": "*",
-        "phpunit/phpunit": "^9.0",
-        "symfony/framework-bundle": "^5.4|^6.0|^7.0",
-        "symfony/browser-kit": "^5.4|^6.0|^7.0"
+        "phpunit/phpunit": "^9.6",
+        "symfony/phpunit-bridge": "^7.4",
+        "symfony/framework-bundle": "^7.4",
+        "symfony/var-dumper": "^7.4",
+        "squizlabs/php_codesniffer": "^3.11|^4.0",
+        "friendsofphp/php-cs-fixer": "^3.60"
     },
     "autoload": {
         "psr-4": {
